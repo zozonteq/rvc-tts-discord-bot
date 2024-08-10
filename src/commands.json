@@ -1,0 +1,14 @@
+[
+    {
+        "name" :  "join",
+        "description"  : "ボイスチャットにボットを接続します。"
+    },
+    {
+        "name" : "leave",
+        "description" : "ボイスチャットから切断します。"
+    },
+    {
+        "name" : "changemodel",
+        "description" : "RVCモデルを変更します。"
+    }
+]
