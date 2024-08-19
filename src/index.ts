@@ -92,6 +92,11 @@ class App {
                 
                 logger.info(this.voiceChannels);
             }
+            else if(interaction.commandName == "leave" ){
+                await interaction.reply({content:"Disconnecting...", ephemeral:true});
+                let key:string = `${interaction.guildId}-${interaction.channelId}`;
+                this.voiceChannels[key].disconnect();
+            }
         });
 
         this.discordClient.on("messageCreate" , async (message:Message)=> {
