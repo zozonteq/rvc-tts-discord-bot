@@ -28,13 +28,12 @@ export class VoiceConnectionWrapper{
                 if(channel){
                     if(channel.members.size === 1 ){
                         logger.info(`There are no member. disconnecting...`);
-                        this.voiceConnection.destroy();
-                        this.cleanup();
+                        this.disconnect();
+
                     }
                 }else{
                     logger.info(`VoiceChannel ${this.channel.id} not found. disconnecting...`);
-                    this.voiceConnection.destroy();
-                    this.cleanup();
+                    this.disconnect();
                 }            
             })();
 
@@ -46,10 +45,14 @@ export class VoiceConnectionWrapper{
         let audio_path:string = await VoiceVoxTextToSpeech(txt);
         audio_path = await applyRVC(audio_path);
         const audio_resource:AudioResource = createAudioResource(audio_path);
-
+        logger.debug("play...")
         this.audio_player.play(audio_resource);
         this.voiceConnection.subscribe(this.audio_player);
 
+    }
+    public disconnect(){
+        this.voiceConnection.destroy();
+        this.cleanup();
     }
     private cleanup() {
         if(this.checker){
