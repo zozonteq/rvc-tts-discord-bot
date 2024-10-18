@@ -36,3 +36,23 @@ https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/blob/main/
 git clone https://github.com/zozonteq/rvc-tts-discord-bot
 ```
 ### 
+
+## 5. config.json
+ボットを動作させるためにDiscordのトークンなどの認証情報やrvcのサーバーのホストなどをあらかじめ設定しておく必要があります。
+1. まずプロジェクトファイル直下に`config.json`を配置します。
+2. 以下のように記述します。
+```json
+{
+    "rvc": {
+        "host": "localhost:7865",
+        "default_model_name":  "default_model_name.pth"
+    },
+    "voicevox" : {
+        "host": "localhost:50021"
+    },
+    "discord" : {
+        "token": "paste_your_discord_bot_token",
+        "application_id": "paste_your_discord_bot_application_id"
+    }
+}
+```
